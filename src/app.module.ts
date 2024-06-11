@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/guard/auth.guard';
 import { RolesModule } from './roles/roles.module';
+import { PermissionsModule } from './permissions/permissions.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -27,6 +28,7 @@ dotenv.config();
     UsersModule,
     AuthModule,
     RolesModule,
+    PermissionsModule,
   ],
   controllers: [AppController],
   providers: [

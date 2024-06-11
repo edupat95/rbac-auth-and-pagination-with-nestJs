@@ -19,6 +19,9 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
+    
+    //console.log('Verificando si el usuario esta autenticado');
+    
     //SI LA RUTA ES PUBLICA CONTINUA YA QUE NO NECESITA AUTENTICACION
     const isPublic = this.reflector.getAllAndOverride<Role>(IS_PUBLIC_KEY, [
       context.getHandler(),

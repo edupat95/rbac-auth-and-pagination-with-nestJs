@@ -8,6 +8,7 @@ import { AuthService } from 'src/auth/auth.service';
 import { ActiveUser } from 'src/common/decorators/active-user.decorator';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/auth/constants';
+import { PermissionsModule } from 'src/permissions/permissions.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([User, Role]),
@@ -23,6 +24,7 @@ import { jwtConstants } from 'src/auth/constants';
   providers: [
     UsersService,
     AuthService,
+    PermissionsModule
   ],
   exports: [UsersService]
 })
