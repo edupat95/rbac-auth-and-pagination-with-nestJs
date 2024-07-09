@@ -1,6 +1,7 @@
 import { User } from './users/entities/user.entity';
 import { RolesService } from './roles/roles.service';
 import { UsersService } from './users/users.service';
+import { PermissionsService } from './permissions/permissions.service';
 
 export const initConfig = async (app) => {
 
@@ -8,6 +9,7 @@ export const initConfig = async (app) => {
   const roleService = app.get(RolesService);
   // Ejecuta la función createDefaultRoles (admin and user)
   await roleService.createDefaultRoles();
+  
 
   const roleAdmin = await roleService.findByName('ADMIN');
   if(!roleAdmin){
@@ -28,6 +30,9 @@ export const initConfig = async (app) => {
   } else {
     console.log('User admin already exists.');
   }
+
+  const permissionsService = app.get(PermissionsService);
+  await permissionsService.createDefaultPermissions();
 
   return true;
 }

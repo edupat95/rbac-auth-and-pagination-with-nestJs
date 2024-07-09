@@ -31,11 +31,6 @@ export class UsersController {
     return await this.usersService.findAll(userFindDto);
   }
 
-  //@Get(':id')
-  //findOne(@Param('id') id: number) {
-  //  return this.usersService.findOne(id);
-  //}
-
   @Patch(':id')
   @AuthRole(['ADMIN', 'GENERAL-MANAGER'])
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {

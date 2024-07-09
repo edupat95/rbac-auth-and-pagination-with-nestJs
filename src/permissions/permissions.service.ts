@@ -150,4 +150,46 @@ export class PermissionsService {
       return new HttpException(`Error deleting permission with id '${id}'. Description: ${error}`, 500);
     }
   }
+
+  async getRolesByNamePermission(name: string): Promise<string[]> {
+    const permission = await this.permissionRepository.findOne(
+      { 
+        where: { name },
+        relations: ['roles']
+      }
+    );
+
+    if (!permission) {
+      throw new HttpException(`Permission with name '${name}' not found.`, 500);
+    }
+
+    const roles: string[] = permission.roles.map(role => role.name);
+
+    return roles;
+  }
+
+  async createDefaultPermissions() {
+    const permissions = [
+      { name: 'CAN-CREATE-PERMISSIONS' },
+      { name: 'CAN-LIST-PERMISSIONS' },
+      { name: 'CAN-UPDATE-PERMISSIONS'},
+      { name: 'CAN-DELETE-PERMISSIONS'},
+    ];
+
+    for (const permission of permissions) {
+      const existPermission = await this.permissionRepository.findOne({ where: { name: permission.name } });
+      const existRole = await this.roleRepository.findOne({ where: { name: 'ADMIN' } });
+
+      if (!existPermission && existRole) {
+        const newPermission = new Permission();
+        newPermission.name = permission.name;
+        newPermission.roles = [existRole];
+        await this.permissionRepository.save(newPermission);
+      } else {
+        console.error('Error creating permission:', permission.name, 'or role ADMIN not found.');
+      }
+    }
+    console.log('Default permissions', permissions ,' created successfully.');
+    return true;
+  }
 }

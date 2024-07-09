@@ -18,6 +18,11 @@ export class PermissionsController {
     return this.permissionsService.create(createPermissionDto);
   }
 
+  @Get(':name')
+  async getRolesByNameOfPermission(@Param('name') name: string): Promise<string[]> {
+    return this.permissionsService.getRolesByNamePermission(name);  
+  }
+
   @Get()
   @Permissions('CAN-LIST-PERMISSIONS')
   //async findAll(@Query() userFindDto: UserFindDto): Promise<PageDto<CreateUserDto>> {

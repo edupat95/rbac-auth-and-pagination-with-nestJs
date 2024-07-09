@@ -22,7 +22,6 @@ export class AuthController {
   @Post('login')
   @Public()
   signIn(@Body() signInDto: SingInDto) {
-    //console.log('signInDto', signInDto);
     return this.authService.signIn(signInDto);
   }
 
@@ -31,13 +30,6 @@ export class AuthController {
   @Post('register')
   signUp(@Body() signUpDto: SingUpDto) {
     return this.authService.signUp(signUpDto);
-  }
-
-  @Public()
-  @Get('hello')
-  getHello() {
-    console.log('Hello Auth!')
-    return { message: 'Hello Auth!' };
   }
 
   @Get('profile')
