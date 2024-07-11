@@ -2,8 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query, HttpException
 import { RolesService } from './roles.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { AuthRole } from 'src/auth/decorators/auth.decorator';
-import { PageDto } from 'src/common/dto/page.dto';
+import { AuthRole } from '../auth/decorators/auth.decorator';
+import { PageDto } from '../common/dto/page.dto';
 import { RoleFindDto } from './dto/find-role.dto';
 
 @Controller('roles')

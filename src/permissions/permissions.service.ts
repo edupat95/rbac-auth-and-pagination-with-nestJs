@@ -4,12 +4,11 @@ import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Permission } from './entities/permission.entity';
 import { In, Repository } from 'typeorm';
-import { Role } from 'src/roles/entities/role.entity';
-import { verify } from 'crypto';
+import { Role } from '../roles/entities/role.entity';
 import { PermissionFindDto } from './dto/permission-find.dto';
-import { PageDto } from 'src/common/dto/page.dto';
-import { PageOptionsDto } from 'src/common/dto/page-options.dto';
-import { PageMetaDto } from 'src/common/dto/page-meta.dto';
+import { PageDto } from '../common/dto/page.dto';
+import { PageOptionsDto } from '../common/dto/page-options.dto';
+import { PageMetaDto } from '../common/dto/page-meta.dto';
 
 @Injectable()
 export class PermissionsService {

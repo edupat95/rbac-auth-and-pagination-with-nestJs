@@ -1,5 +1,3 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreatePermissionDto } from './create-permission.dto';
 import { ArrayMinSize, ArrayNotEmpty, IsArray, IsNotEmpty, IsString, MaxLength, MinLength, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { RoleDto } from './role-dto.dto';

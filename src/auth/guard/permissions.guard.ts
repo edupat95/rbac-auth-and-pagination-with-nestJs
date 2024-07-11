@@ -2,7 +2,7 @@ import { CanActivate, ExecutionContext, HttpException, Injectable } from '@nestj
 import { Reflector } from '@nestjs/core';
 import { PERMISSIONS_KEY } from '../decorators/permission.decorator';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Permission } from 'src/permissions/entities/permission.entity';
+import { Permission } from '../../permissions/entities/permission.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

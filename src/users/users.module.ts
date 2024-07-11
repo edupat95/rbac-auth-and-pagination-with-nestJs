@@ -5,7 +5,6 @@ import { TypeOrmModule} from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Role } from 'src/roles/entities/role.entity';
 import { AuthService } from 'src/auth/auth.service';
-import { ActiveUser } from 'src/common/decorators/active-user.decorator';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/auth/constants';
 import { PermissionsModule } from 'src/permissions/permissions.module';

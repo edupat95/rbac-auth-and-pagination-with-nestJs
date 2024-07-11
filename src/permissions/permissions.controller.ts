@@ -2,10 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { PermissionsService } from './permissions.service';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
-import { AuthRole } from 'src/auth/decorators/auth.decorator';
-import { Permissions } from 'src/auth/decorators/permission.decorator';
+import { Permissions } from '../auth/decorators/permission.decorator';
 import { PermissionFindDto } from './dto/permission-find.dto';
-import { PageDto } from 'src/common/dto/page.dto';
+import { PageDto } from '../common/dto/page.dto';
 
 @Controller('permissions')
 export class PermissionsController {

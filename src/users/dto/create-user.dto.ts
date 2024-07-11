@@ -1,7 +1,7 @@
 import { Unique } from 'typeorm';
 import { IsEmail, IsNotEmpty, IsString, IsStrongPassword, MaxLength, MinLength } from 'class-validator';
 import { Transform } from 'class-transformer'; 
-import { Role } from 'src/roles/entities/role.entity';
+import { Role } from '../../roles/entities/role.entity';
 
 export class CreateUserDto {
     

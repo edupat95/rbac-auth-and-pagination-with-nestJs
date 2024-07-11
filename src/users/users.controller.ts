@@ -2,10 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Query } from '@
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { AuthRole } from 'src/auth/decorators/auth.decorator';
-import { ActiveUser } from 'src/common/decorators/active-user.decorator';
-import { UserActiveIterface } from 'src/common/interfaces/ative-user.interface';
-import { PageDto } from 'src/common/dto/page.dto';
+import { AuthRole } from '../auth/decorators/auth.decorator';
+import { ActiveUser } from '../common/decorators/active-user.decorator';
+import { UserActiveIterface } from '../common/interfaces/ative-user.interface';
+import { PageDto } from '../common/dto/page.dto';
 import { UserFindDto } from './dto/find-user.dto';
 
 @Controller('users')

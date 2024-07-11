@@ -22,6 +22,22 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+
+## Description
+ENGLISH: This project implements a Role-Based Access Control (RBAC) system (including pagination and filters) using the NestJS framework. It is designed to provide a robust and scalable foundation for managing users and permissions, as well as handling large data sets efficiently.
+
+SPANISH: Este proyecto implementa un sistema de autenticación basado en roles (RBAC) (paginación y filtros incluidos) utilizando el framework NestJS. Está diseñado para proporcionar una base sólida y escalable para la gestión de usuarios y permisos, así como para manejar grandes conjuntos de datos de manera eficiente.
+
+## Características
+
+Autenticación y Autorización: Gestión de usuarios y roles con control de acceso basado en roles (RBAC).
+Paginación: Soporte para paginación de datos, facilitando el manejo de grandes volúmenes de información.
+NestJS: Implementación utilizando NestJS, un framework progresivo de Node.js.
+
+## Requisitos
+Node.js
+NestJS CLI
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.

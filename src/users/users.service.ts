@@ -5,12 +5,11 @@ import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { Role } from 'src/roles/entities/role.entity';
+import { Role } from '../roles/entities/role.entity';
 import { JwtService } from '@nestjs/jwt';
-import { Request } from 'express';
-import { PageOptionsDto } from 'src/common/dto/page-options.dto';
-import { PageDto } from 'src/common/dto/page.dto';
-import { PageMetaDto } from 'src/common/dto/page-meta.dto';
+import { PageOptionsDto } from '../common/dto/page-options.dto';
+import { PageDto } from '../common/dto/page.dto';
+import { PageMetaDto } from '../common/dto/page-meta.dto';
 import { UserFindDto } from './dto/find-user.dto';
 
 @Injectable()

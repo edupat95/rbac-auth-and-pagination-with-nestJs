@@ -9,10 +9,10 @@ import {
 import { AuthService } from './auth.service';
 import { SingUpDto } from './dto/sing-up.dto';
 import { SingInDto } from './dto/sing-in.dto';
-import { Public } from 'src/public.decorator';
+import { Public } from '../public.decorator';
 import { AuthRole } from './decorators/auth.decorator';
-import { ActiveUser } from 'src/common/decorators/active-user.decorator';
-import { UserActiveIterface } from 'src/common/interfaces/ative-user.interface';
+import { ActiveUser } from '../common/decorators/active-user.decorator';
+import { UserActiveIterface } from '../common/interfaces/ative-user.interface';
 
 @Controller('auth')
 export class AuthController {

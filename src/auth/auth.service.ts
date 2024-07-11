@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { SingUpDto } from './dto/sing-up.dto';
 import { SingInDto } from './dto/sing-in.dto';
 import * as bcrypt from 'bcrypt';
-import { Role } from 'src/roles/entities/role.entity';
+import { Role } from '../roles/entities/role.entity';
 
 @Injectable()
 export class AuthService {

@@ -1,7 +1,7 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsBoolean, IsInt, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
-import { PageOptionsDto } from 'src/common/dto/page-options.dto';
+import { PageOptionsDto } from '../../common/dto/page-options.dto';
 
 export class PermissionFindDto extends PageOptionsDto {
 

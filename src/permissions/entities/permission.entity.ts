@@ -1,5 +1,5 @@
-import { AbstractEntity } from "src/common/entities/abstract-entitie.entity";
-import { Role } from "src/roles/entities/role.entity";
+import { AbstractEntity } from "../../common/entities/abstract-entitie.entity";
+import { Role } from "../../roles/entities/role.entity";
 import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
 
 @Entity("permission")

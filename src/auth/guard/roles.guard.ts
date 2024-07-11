@@ -8,7 +8,7 @@ export class RolesGuard implements CanActivate {
 
   canActivate(context: ExecutionContext): boolean {
     
-    //permite obtener los roles de los metadatos de la clase o del metodo. 
+    //permite obtener los ro  les de los metadatos de la clase o del metodo. 
     //Por ejemplo: @Auth(['ADMIN','USER']), nos permite obtener ['ADMIN','USER']
     const roles_required = this.reflector.getAllAndOverride(ROLES_KEY, [
       context.getHandler(),

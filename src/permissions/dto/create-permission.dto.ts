@@ -1,7 +1,5 @@
-import { Unique } from 'typeorm';
-import { IsEmail, IsString, IsStrongPassword, MaxLength, MinLength, IsArray, IsNotEmpty, ArrayMinSize, ArrayNotEmpty, ValidateNested } from 'class-validator';
-import { Transform, Type } from 'class-transformer'; 
-import { Role } from 'src/roles/entities/role.entity';
+import { IsString, MaxLength, MinLength, IsArray, IsNotEmpty, ArrayMinSize, ArrayNotEmpty, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer'; 
 import { RoleDto } from './role-dto.dto';
 
 export class CreatePermissionDto {

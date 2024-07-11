@@ -4,9 +4,9 @@ import { UpdateRoleDto } from './dto/update-role.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Role } from './entities/role.entity';
-import { PageOptionsDto } from 'src/common/dto/page-options.dto';
-import { PageDto } from 'src/common/dto/page.dto';
-import { PageMetaDto } from 'src/common/dto/page-meta.dto';
+import { PageOptionsDto } from '../common/dto/page-options.dto';
+import { PageDto } from '../common/dto/page.dto';
+import { PageMetaDto } from '../common/dto/page-meta.dto';
 import { RoleFindDto } from './dto/find-role.dto';
 
 
