@@ -22,12 +22,10 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    //find user by username
+    
     const userFoundUsername = await this.userRepository.findOneBy({
       username: createUserDto.username,
-    });
-    
-    //return exception if user found
+    });  
     if (userFoundUsername) {
       throw new HttpException('Username already exists', 409);
     }
