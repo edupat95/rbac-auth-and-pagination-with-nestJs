@@ -5,16 +5,12 @@ import { UpdateRoleDto } from './dto/update-role.dto';
 import { AuthRole } from '../auth/decorators/auth.decorator';
 import { PageDto } from '../common/dto/page.dto';
 import { RoleFindDto } from './dto/find-role.dto';
+import { Permissions } from 'src/auth/decorators/permission.decorator';
 
 @Controller('roles')
 export class RolesController {
   constructor(private readonly rolesService: RolesService) {}
 
-  @Get('hello')
-  getHello(): string {
-    return 'Hello World!';
-  }
-  
   @Post()
   @AuthRole(['ADMIN', 'GENERAL-MANAGER'])
   create(@Body() createRoleDto: CreateRoleDto) {
@@ -23,9 +19,8 @@ export class RolesController {
   }
   
   @Get()
-  @AuthRole(['ADMIN', 'GENERAL-MANAGER'])
+  @Permissions('USER-ADMINISTRATION-CAN-LIST-ROLES')
   async findAll(@Query() roleFindDto: RoleFindDto): Promise<PageDto<CreateRoleDto>> {
-    
     return await this.rolesService.findAll(roleFindDto);
   }
 

@@ -34,8 +34,6 @@ export class UsersController {
   @Patch(':id')
   @AuthRole(['ADMIN', 'GENERAL-MANAGER'])
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    //console.log('updateUserDto:', updateUserDto)
-    //console.log('user id:', id)
     return this.usersService.update(+id, updateUserDto);
   }
 

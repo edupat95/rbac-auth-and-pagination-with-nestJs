@@ -121,20 +121,35 @@ describe('UsersService', () => { //Este bloque define un conjunto de pruebas par
 
   describe('update', () => {
     it('should throw an exception if the user does not exist', async () => {
-      jest.spyOn(userRepository, 'findOne').mockResolvedValue(null);
-
+      // La primera llamada al findOne de userRepository devolverá null.
+      jest.spyOn(userRepository, 'findOne').mockResolvedValue(null); 
+      
+      //Por lo tanto deberiamos recibir un HttpException
       await expect(service.update(1, { username: 'test', email: 'test@test.com', roles: [] })).rejects.toThrow(HttpException);
     });
 
     it('should update a user successfully', async () => {
-      const user = { id: 1, username: 'old', email: 'old@test.com', roles: [] } as User;
+      //Definimos un usuario a actualizar o usuario viejo
+      const user = { id: 1, username: 'old', email: 'old@test.com'} as User;
+      
+      //Definimos los nuevos roles.
       const roles = [
         { id: 1, name: 'ADMIN' } as Role,
         { id: 2, name: 'USER' } as Role,
       ];
+
+      //Definimos el usuario actualizado
       const updatedUser = { ...user, username: 'new', email: 'new@test.com', roles };
 
-      jest.spyOn(userRepository, 'findOne').mockResolvedValue(user);
+      jest.spyOn(userRepository, 'findOne').mockResolvedValue(user); // La primer llamada a findOne de userRepository devolverá el usuario simulado.
+      /*
+        Este usuario simulado posee los siguientes datos:
+        id: 1
+        username: 'old'
+        email: 'old@test.com'
+        roles: []
+      */ 
+      
       jest.spyOn(userRepository, 'save').mockResolvedValue(updatedUser);
       jest.spyOn(roleRepository, 'findOne').mockImplementation(async (options: FindOneOptions<Role>) => {
         if (options && options.where && typeof options.where === 'object' && 'name' in options.where) {

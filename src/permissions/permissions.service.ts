@@ -9,7 +9,8 @@ import { PermissionFindDto } from './dto/permission-find.dto';
 import { PageDto } from '../common/dto/page.dto';
 import { PageOptionsDto } from '../common/dto/page-options.dto';
 import { PageMetaDto } from '../common/dto/page-meta.dto';
-
+import { PERMISSIONS } from './constants/permissions-const';
+import { UserActiveIterface } from 'src/common/interfaces/ative-user.interface';
 @Injectable()
 export class PermissionsService {
   constructor(
@@ -168,12 +169,7 @@ export class PermissionsService {
   }
 
   async createDefaultPermissions() {
-    const permissions = [
-      { name: 'CAN-CREATE-PERMISSIONS' },
-      { name: 'CAN-LIST-PERMISSIONS' },
-      { name: 'CAN-UPDATE-PERMISSIONS'},
-      { name: 'CAN-DELETE-PERMISSIONS'},
-    ];
+    const permissions = PERMISSIONS;
 
     for (const permission of permissions) {
       const existPermission = await this.permissionRepository.findOne({ where: { name: permission.name } });
@@ -190,5 +186,24 @@ export class PermissionsService {
     }
     console.log('Default permissions', permissions ,' created successfully.');
     return true;
+  }
+
+  async getPermissionsByUser(user: UserActiveIterface): Promise<string[]> {
+    const roles = user.roles;
+    
+    if (roles.some(role => role === 'ADMIN')) {
+      const permissions = await this.permissionRepository.find();
+      return permissions.map(permission => permission.name);
+    }
+
+    const rolesObj = await this.roleRepository.find({ where: { name: In(roles) } });
+
+    const permissions = await this.permissionRepository
+      .createQueryBuilder('permission')
+      .innerJoin('permission.roles', 'role')
+      .where('role.name IN (:...roles)', { roles })
+      .getMany();
+          
+    return permissions.map(permission => permission.name);
   }
 }

@@ -224,7 +224,6 @@ export class UsersService {
   }
 
   async remove(id: number) {
-    console.log('service id', id);
     const user = await this.userRepository.findOne({
       where : { id },
     });

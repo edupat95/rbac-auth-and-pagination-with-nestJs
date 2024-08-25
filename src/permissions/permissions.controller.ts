@@ -5,6 +5,8 @@ import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { Permissions } from '../auth/decorators/permission.decorator';
 import { PermissionFindDto } from './dto/permission-find.dto';
 import { PageDto } from '../common/dto/page.dto';
+import { ActiveUser } from 'src/common/decorators/active-user.decorator';
+import { UserActiveIterface } from 'src/common/interfaces/ative-user.interface';
 
 @Controller('permissions')
 export class PermissionsController {
@@ -13,13 +15,17 @@ export class PermissionsController {
   @Post()
   @Permissions('CAN-CREATE-PERMISSIONS')
   create(@Body() createPermissionDto: CreatePermissionDto) {
-    //console.log('createPermissionDto:', createPermissionDto)
     return this.permissionsService.create(createPermissionDto);
   }
 
-  @Get(':name')
+  @Get('/roles-by-permission/:name')
   async getRolesByNameOfPermission(@Param('name') name: string): Promise<string[]> {
-    return this.permissionsService.getRolesByNamePermission(name);  
+    return this.permissionsService.getRolesByNamePermission(name);
+  }
+
+  @Get('/permissions-of-user')
+  async getPermissionsOfUser(@ActiveUser() user: UserActiveIterface) {
+    return this.permissionsService.getPermissionsByUser(user);
   }
 
   @Get()
@@ -29,16 +35,9 @@ export class PermissionsController {
     return this.permissionsService.findAll(permissionFindDto);
   }
 
-  //@Get(':id')
-  //@AuthRole(['ADMIN', 'GENERAL-MANAGER'])
-  //findOne(@Param('id') id: string) {
-  //  return this.permissionsService.findOne(+id);
-  //}
-
   @Patch(':id')
   @Permissions('CAN-UPDATE-PERMISSIONS')
   update(@Param('id') id: string, @Body() updatePermissionDto: UpdatePermissionDto) {
-    console.log('updatePermissionDto:', updatePermissionDto);
     return this.permissionsService.update(+id, updatePermissionDto);
   }
 
