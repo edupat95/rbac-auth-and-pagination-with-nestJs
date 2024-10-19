@@ -29,20 +29,20 @@ export class PermissionsController {
   }
 
   @Get()
-  @Permissions('CAN-LIST-PERMISSIONS')
+  @Permissions('USER-ADMINISTRATION-CAN-LIST-PERMISSIONS')
   //async findAll(@Query() userFindDto: UserFindDto): Promise<PageDto<CreateUserDto>> {
   async findAll(@Query() permissionFindDto: PermissionFindDto): Promise<PageDto<CreatePermissionDto>> {
     return this.permissionsService.findAll(permissionFindDto);
   }
 
   @Patch(':id')
-  @Permissions('CAN-UPDATE-PERMISSIONS')
+  @Permissions('USER-ADMINISTRATION-CAN-UPDATE-PERMISSIONS')
   update(@Param('id') id: string, @Body() updatePermissionDto: UpdatePermissionDto) {
     return this.permissionsService.update(+id, updatePermissionDto);
   }
 
   @Delete(':id')
-  @Permissions('CAN-DELETE-PERMISSIONS')
+  @Permissions('USER-ADMINISTRATION-CAN-DELETE-PERMISSIONS')
   remove(@Param('id') id: string) {
     return this.permissionsService.remove(+id);
   }
